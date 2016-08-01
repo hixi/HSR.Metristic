@@ -16,7 +16,7 @@ Watch files and compile TS to JS on changes:
 ```shell
 gulp watch
 ```
-Serve app (compiles on changes and reloads):
+Serve app:
 ```shell
 gulp serve
 # or
