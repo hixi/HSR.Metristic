@@ -10,6 +10,7 @@ module.exports = {
 	web: {
 		name: 'General web project',
 		description: 'Check HTML, CSS and JS',
-		checks: [StructureMetric]
+		checks: [StructureMetric],
+		options: {}
 	}
 };
