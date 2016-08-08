@@ -1,40 +1,22 @@
 var Path = require('path');
 var FS = require('fs');
-var Handlebars = require('handlebars');
 
-import {Check} from "./check";
-import {Report} from "./report";
-import {HtmlReport} from "./html-report";
+import {Check} from "./../../domain/model/check";
+import {Report} from "./../../domain/model/report";
+import {HtmlReport} from "./../../domain/model/html-report";
 
 
 export class StructureMetric implements Check {
-	constructor() {}
+	private reportTemplate: string;
+	private partials: {[name:string]:string};
 
-	private reportTemplate = `<ul>
-	<li>{{counts.numberOfDirectories}} directories</li>
-	<li>{{counts.numberOfFiles}} files</li>
-</ul>
-{{> directoryPartial structure=structure}}`;
+	constructor() {
+		this.reportTemplate = FS.readFileSync(Path.join(__dirname,'./templates/reportTemplate.html'), "utf8");
+		this.partials = {
+			directoryPartial: FS.readFileSync(Path.join(__dirname,'./templates/directoryPartial.html'), "utf8")
+		}
+	}
 
-	private partials: {[name:string]:string} = {
-		directoryPartial: `<span>{{name}}</span>
-<ul class="structure">
-	{{#each structure.directories}}
-	<li class="empty">
-		<img src="/assets/images/icon-directory.svg" class="icon directory" />
-		{{> directoryPartial structure=this}}
-	</li>
-	{{/each}}
-</ul>
-<ul class="structure">
-	{{#each structure.files}}
-	<li class="empty">
-		<img src="/assets/images/icon-file.svg" class="icon file" />
-		{{this}}
-	</li>
-	{{/each}}
-</ul>`
-};
 
 	public execute(directory: string, callback: (report: Report) => {}): void {
 		let statistics: any = {
