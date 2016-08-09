@@ -1,4 +1,5 @@
 var StructureMetric = require("../check-plugins/structure-metric/structure-metric").StructureMetric;
+var HtmlW3cValidator = require("../check-plugins/html-w3c-validator/html-w3c-validator").HtmlW3cValidator;
 
 
 module.exports = {
@@ -10,7 +11,7 @@ module.exports = {
 	web: {
 		name: 'General web project',
 		description: 'Check HTML, CSS and JS',
-		checks: [StructureMetric],
+		checks: [StructureMetric, HtmlW3cValidator],
 		options: {}
 	}
 };
