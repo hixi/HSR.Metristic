@@ -9,8 +9,14 @@ module.exports = {
 		description: 'Check file structure',
 		checks: [StructureMetric]
 	},
-	web: {
-		name: 'General web project',
+	webMetrics: {
+		name: 'Web project metrics',
+		description: 'Show metrics of HTML, CSS and JS',
+		checks: [StructureMetric, HtmlMetric],
+		options: {}
+	},
+	webCheck: {
+		name: 'Web project checking',
 		description: 'Check HTML, CSS and JS',
 		checks: [StructureMetric, HtmlW3cValidator, HtmlMetric],
 		options: {}
