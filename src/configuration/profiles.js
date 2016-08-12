@@ -1,6 +1,7 @@
 var StructureMetric = require("../check-plugins/structure-metric/structure-metric").StructureMetric;
 var HtmlW3cValidator = require("../check-plugins/html-w3c-validator/html-w3c-validator").HtmlW3cValidator;
 var HtmlMetric = require("../check-plugins/html-metric/html-metric").HtmlMetric;
+var CssMetric = require("../check-plugins/css-metric/css-metric").CssMetric;
 
 
 module.exports = {
@@ -12,7 +13,7 @@ module.exports = {
 	webMetrics: {
 		name: 'Web project metrics',
 		description: 'Show metrics of HTML, CSS and JS',
-		checks: [StructureMetric, HtmlMetric],
+		checks: [StructureMetric, HtmlMetric, CssMetric],
 		options: {}
 	},
 	webCheck: {
