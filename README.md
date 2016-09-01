@@ -11,6 +11,21 @@ https://github.com/wasabideveloper/HSR.Metristic/wiki
 [Apache License Version 2.0](./LICENSE)
 
 
+## Production
+
+### Installation
+
+* Install node.js
+* Extract archive
+* Enter the extracted directory, e.g. `Metristic-1.0`.
+* Run `npm install --production` to install the dependencies.
+
+### Start
+
+* Run `node dist/app/index.js` to start the application.
+* Open `localhost:8080` in your browser.
+
+
 ## Development
 
 ### Global dependencies
