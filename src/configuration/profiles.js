@@ -39,7 +39,7 @@ module.exports = {
 				rules: [
 					{
 						name: "Hreflang attribute for external links",
-						files: "*/index.html",
+						files: "*/*.html",
 						snippet: {
 							rule: /<a[^<>]*hreflang="\w{2}"[^<>]*>[^<>\/]*<\/a>/igm,
 							min: 2,
@@ -53,7 +53,7 @@ module.exports = {
 					},
 					{
 						name: "Time element usage",
-						files: "*/index.html",
+						files: "*/*.html",
 						snippet: {
 							rule: /<time[^<>\/]*>[^<>\/]*<\/time>/igm,
 							min: 15,
@@ -71,6 +71,21 @@ module.exports = {
 							error: {
 								message: "Time element not used correct. Don't forget datetime attribute and value (http://www.w3schools.com/tags/att_time_datetime.asp).",
 								type: "error"
+							}
+						}
+					},
+					{
+						name: "Unexpected elements usage",
+						files: "*/*.html",
+						snippet: {
+							// [\S\s] = all characters incl. whitespace
+							// ((?!<(\/?dl|\/?nav)>)[\S\s])* = all characters excluding <(\/?dl|\/?nav)>
+							rule: /((<br( )?\/?>)|(<embed[^<>]*>)|(<input[^<>]*type="submit"[^<>]*\/?>)|(class="clear(-fix)?")|(<d(t|d)[^<>]*>[^<>]*<a[^<>]*>((?!<\/a>)[\S\s])*<\/a>[^<>]*<\/d(t|d)>))/igm,
+							min: null,
+							max: 0,
+							error: {
+								message: "Unexpected elements or attributes used like br, embed, input type=submit, clear-fix class, or dl for navigations.",
+								type: "warning"
 							}
 						}
 					}
