@@ -42,12 +42,35 @@ module.exports = {
 						files: "index.html",
 						snippet: {
 							rule: /<a[^<>]*hreflang="\w{2}"[^<>]*>[^<>\/]*<\/a>/igm,
-							min: 2, // min: null means bound will not be checked
-							max: 4, // max: null means bound will not be checked
+							min: 2,
+							max: 4,
 							error: {
 								message: "Not enough links with hreflang attribute found.",
-								type: "warning", // "info" | "warning" | "error"
+								type: "warning",
 								hideOccurrencesInReport: true
+							}
+						}
+					},
+					{
+						name: "Time element usage",
+						files: "index.html",
+						snippet: {
+							rule: /<time[^<>\/]*>[^<>\/]*<\/time>/igm,
+							min: 15,
+							max: null,
+							error: {
+								message: "Not enough or to less time elements found. Please use <time> for every time occurence.",
+								type: "warning"
+							}
+						},
+						snippetCheck: {
+							rule: /<time [^<>\/]*datetime="((\d{4}(-\d{2}){0,2})|(-\d{2}){0,2}|(\d{4}-W\d{2})|(\d{4}(-\d{2}){2}(T| )\d{2}:\d{2}(:\d{2}(.\d{3})?)?)|(\d{2}:\d{2}((\+|\-)\d{2}:\d{2})?))"[^<>\/]*>[^<>\/]*<\/time>/igm,
+							min: 1,
+							max: 1,
+							valueFormat: "NUMBER",
+							error: {
+								message: "Time element not used correct. Don't forget datetime attribute and value (http://www.w3schools.com/tags/att_time_datetime.asp).",
+								type: "error"
 							}
 						}
 					}
