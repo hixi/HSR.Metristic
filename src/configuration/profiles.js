@@ -39,27 +39,27 @@ module.exports = {
 				rules: [
 					{
 						name: "Hreflang attribute for external links",
-						files: "index.html",
+						files: "*/index.html",
 						snippet: {
 							rule: /<a[^<>]*hreflang="\w{2}"[^<>]*>[^<>\/]*<\/a>/igm,
 							min: 2,
 							max: 4,
 							error: {
 								message: "Not enough links with hreflang attribute found.",
-								type: "warning",
+								type: "error",
 								hideOccurrencesInReport: true
 							}
 						}
 					},
 					{
 						name: "Time element usage",
-						files: "index.html",
+						files: "*/index.html",
 						snippet: {
 							rule: /<time[^<>\/]*>[^<>\/]*<\/time>/igm,
 							min: 15,
 							max: null,
 							error: {
-								message: "Not enough or to less time elements found. Please use <time> for every time occurence.",
+								message: "Not enough time elements found. Please use <time> for every time designation.",
 								type: "warning"
 							}
 						},
