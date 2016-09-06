@@ -20,13 +20,13 @@ module.exports = {
 	},
 	webCheck: {
 		name: 'Web project checking',
-		description: 'Show metrics of HTML, CSS and JS and check JS code style and check by custom rules.',
+		description: 'Show metrics of HTML, CSS and JS and check JS code style and check by custom patterns.',
 		checks: [StructureMetric, HtmlMetric, CssMetric, JsStyleCheck, RegexCheck],
 		options: {}
 	},
 	webCheckAdvanced: {
 		name: 'Extensive web project check',
-		description: 'Show metrics of HTML, CSS and JS and check JS code style and check by custom rules and validate html by W3C',
+		description: 'Show metrics of HTML, CSS and JS and check JS code style and check by custom patterns and validate html by W3C',
 		checks: [StructureMetric, HtmlMetric, CssMetric, JsStyleCheck, RegexCheck, HtmlW3cValidator],
 		options: {}
 	},
@@ -41,7 +41,7 @@ module.exports = {
 						name: "Hreflang attribute for external links",
 						files: "*/*.html",
 						snippet: {
-							rule: /<a[^<>]*hreflang="\w{2}"[^<>]*>[^<>\/]*<\/a>/igm,
+							patterns: [/<a[^<>]*hreflang="\w{2}"[^<>]*>[^<>\/]*<\/a>/igm],
 							min: 2,
 							max: 4,
 							error: {
@@ -55,7 +55,7 @@ module.exports = {
 						name: "Time element usage",
 						files: "*/*.html",
 						snippet: {
-							rule: /<time[^<>\/]*>[^<>\/]*<\/time>/igm,
+							patterns: [/<time[^<>\/]*>[^<>\/]*<\/time>/igm],
 							min: 15,
 							max: null,
 							error: {
@@ -64,7 +64,7 @@ module.exports = {
 							}
 						},
 						snippetCheck: {
-							rule: /<time [^<>\/]*datetime="((\d{4}(-\d{2}){0,2})|(-\d{2}){0,2}|(\d{4}-W\d{2})|(\d{4}(-\d{2}){2}(T| )\d{2}:\d{2}(:\d{2}(.\d{3})?)?)|(\d{2}:\d{2}((\+|\-)\d{2}:\d{2})?))"[^<>\/]*>[^<>\/]*<\/time>/igm,
+							pattern: /<time [^<>\/]*datetime="((\d{4}(-\d{2}){0,2})|(-\d{2}){0,2}|(\d{4}-W\d{2})|(\d{4}(-\d{2}){2}(T| )\d{2}:\d{2}(:\d{2}(.\d{3})?)?)|(\d{2}:\d{2}((\+|\-)\d{2}:\d{2})?))"[^<>\/]*>[^<>\/]*<\/time>/igm,
 							min: 1,
 							max: 1,
 							valueFormat: "NUMBER",
@@ -80,12 +80,73 @@ module.exports = {
 						snippet: {
 							// [\S\s] = all characters incl. whitespace
 							// ((?!<(\/?dl|\/?nav)>)[\S\s])* = all characters excluding <(\/?dl|\/?nav)>
-							rule: /((<br( )?\/?>)|(<embed[^<>]*>)|(<input[^<>]*type="(submit|reset|button)"[^<>]*\/?>)|(class="clear(-fix)?")|(<d(t|d)[^<>]*>[^<>]*<a[^<>]*>((?!<\/a>)[\S\s])*<\/a>[^<>]*<\/d(t|d)>)|(<img[^<>]*src="data:[^<>]*"[^<>]*\/?>))/igm,
+							patterns: [/((<br( )?\/?>)|(<embed[^<>]*>)|(<input[^<>]*type="(submit|reset|button)"[^<>]*\/?>)|(class="clear(-fix)?")|(<d(t|d)[^<>]*>[^<>]*<a[^<>]*>((?!<\/a>)[\S\s])*<\/a>[^<>]*<\/d(t|d)>)|(<img[^<>]*src="data:[^<>]*"[^<>]*\/?>))/igm],
+
+							patternLabels: ['br', 'embed', 'input submit/reset/button', 'clear-fix', 'dl-navigations', 'data URI'],
 							min: null,
 							max: 0,
 							error: {
 								message: "Unexpected elements or attributes used like br, embed, input for submit/reset/button, clear-fix classes, img data uri's or dl for navigations.",
 								type: "warning"
+							}
+						}
+					},
+					{
+						name: "Required elements",
+						files: "*/*.html",
+						snippet: {
+							patterns: [
+								/<address[^<>]*>/igm,
+								/<meta[^<>]*name="\w*"[^<>]*>/igm,
+								/<link[^<>]*rel="icon"[^<>]*>/igm,
+								/<iframe[^<>]*>/igm,
+								/<track[^<>]*>/igm,
+								/<dl>((?!<\/dl>)[\S\s])*<\/dl>/igm,
+								/<ul>((?!<\/ul>)[\S\s])*<\/ul>/igm,
+								/<ol>((?!<\/ol>)[\S\s])*<\/ol>/igm,
+								/<main[^<>]*>/igm,
+								/<nav[^<>]*>/igm,
+								/<aside[^<>]*>/igm,
+								/<article[^<>]*>/igm,
+								/<header[^<>]*>/igm,
+								/<footer[^<>]*>/igm,
+								/<figure[^<>]*>/igm,
+								/<figcaption[^<>]*>/igm,
+								/<small[^<>]*>/igm,
+								/<object[^<>]*>/igm,
+								/<form[^<>]*>/igm
+							],
+							patternLabels: ['address', 'meta', 'link', 'iframe', 'track', 'definition list', 'unordered list', 'ordered list', 'main', 'nav', 'aside', 'article', 'header', 'footer', 'figure', 'figcaption', 'small', 'object', 'form'
+							],
+							min: 1,
+							max: null,
+							error: {
+								message: "Some of the following expected elements not found: address, meta, bookmark icon, iframe, video track, definition-, un- y ordered list, main, nav, aside, article, header, footer, figure, figcaption, small, object, form",
+								type: "error"
+							}
+						}
+					},
+					{
+						name: "Required form elements",
+						files: "*/*.html",
+						snippet: {
+							patterns: [
+								/<output[^<>]*>/igm,
+								/<input[^<>]*type="range"[^<>]*>/igm,
+								/<input[^<>]*type="search"[^<>]*>/igm,
+								/<input[^<>]*type="radio"[^<>]*>/igm,
+								/<input[^<>]*type="email"[^<>]*>/igm,
+								/<input[^<>]*type="url"[^<>]*>/igm,
+								/<select[^<>]*>[^<>]*(<option[^<>]*value="[^<>]*"[^<>]*>[^<>]*<\/option>[^<>]*)*[^<>]*<\/select>/igm,
+								/<textarea[^<>]*>/igm
+							],
+							patternLabels: ['output', 'range input', 'search input', 'radio input', 'email input', 'url input', 'select', 'textarea'
+							],
+							min: 1,
+							max: null,
+							error: {
+								message: "Some of the following expected form elements not found: output, range/search/radio/email/url input, select, textarea",
+								type: "error"
 							}
 						}
 					}
