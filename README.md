@@ -2,7 +2,7 @@
 Node.js based checking and metric web service
 
 
-## Wiki
+## Documentation (Wiki)
 https://github.com/wasabideveloper/HSR.Metristic/wiki
 
 
