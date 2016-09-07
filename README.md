@@ -2,8 +2,11 @@
 Node.js based checking and metric web service
 
 
-## Documentation (Wiki)
-https://github.com/wasabideveloper/HSR.Metristic/wiki
+## Documentation
+
+* Project documentation: [GitHub Wiki](https://github.com/wasabideveloper/HSR.Metristic/wiki)
+* [Open issues](https://github.com/wasabideveloper/HSR.Metristic/issues)
+* [Milestones](https://github.com/wasabideveloper/HSR.Metristic/milestones)
 
 
 ## Lisence
@@ -11,7 +14,9 @@ https://github.com/wasabideveloper/HSR.Metristic/wiki
 [Apache License Version 2.0](./LICENSE)
 
 
-## Production
+## Releases / Production
+
+Download on the [Release page](https://github.com/wasabideveloper/HSR.Metristic/releases)
 
 ### Installation
 
@@ -34,6 +39,12 @@ https://github.com/wasabideveloper/HSR.Metristic/wiki
 * Typescript Compiler ```npm install tsc --global```
 * Typings ```npm install typings --global```
 
+### Installation
+
+* Install global dependencies
+* Clone project
+* Run `npm install` to install the dependencies.
+* Install typings depencency ```tsd install```
 
 ### Commands
 
@@ -47,10 +58,6 @@ gulp serve
 # or
 npm start
 ```
-Deploy app to directory `deploy`:
-```shell
-gulp deploy
-```
 Access app:
 `localhost:8080`
 
@@ -60,13 +67,11 @@ gulp test
 # or
 npm test
 ```
-
-Install typings depencency:
+Install new type declarations:
 ```shell
 # jasmine example
 tsd query jasmine --action install --save
 ```
-
 
 ## Various
 
