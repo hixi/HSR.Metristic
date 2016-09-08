@@ -16,7 +16,7 @@ Node.js based checking and metric web service
 
 ## Releases / Production
 
-Download on the [Release page](https://github.com/wasabideveloper/HSR.Metristic/releases)
+⬇ Download on the [Release page](https://github.com/wasabideveloper/HSR.Metristic/releases)
 
 ### Installation
 
