@@ -42,7 +42,8 @@ module.exports = {
 					rules.timeElementUsage,
 					rules.unexpectedElementsUsage,
 					rules.requiredElements,
-					rules.requiredFormElements
+					rules.requiredFormElements,
+					rules.rolesUsage
 				]
 			}
 		}
