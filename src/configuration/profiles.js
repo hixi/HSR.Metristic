@@ -46,7 +46,8 @@ module.exports = {
 					rules.rolesUsage,
 					rules.articleUsage,
 					rules.completeArticleUsage,
-					rules.svgObjectUsage
+					rules.svgObjectUsage,
+					rules.figureUsage
 				]
 			}
 		}
