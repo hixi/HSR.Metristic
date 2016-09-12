@@ -43,7 +43,9 @@ module.exports = {
 					rules.unexpectedElementsUsage,
 					rules.requiredElements,
 					rules.requiredFormElements,
-					rules.rolesUsage
+					rules.rolesUsage,
+					rules.articleUsage,
+					rules.completeArticleUsage
 				]
 			}
 		}
