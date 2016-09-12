@@ -10,7 +10,8 @@ module.exports = {
 	general: {
 		name: 'General project',
 		description: 'Check file structure',
-		checks: [StructureMetric]
+		checks: [StructureMetric],
+		options: {}
 	},
 	webMetrics: {
 		name: 'Web project metrics',
