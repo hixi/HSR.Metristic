@@ -45,7 +45,8 @@ module.exports = {
 					rules.requiredFormElements,
 					rules.rolesUsage,
 					rules.articleUsage,
-					rules.completeArticleUsage
+					rules.completeArticleUsage,
+					rules.svgObjectUsage
 				]
 			}
 		}
