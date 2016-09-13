@@ -16,6 +16,7 @@ https://github.com/wasabideveloper/HSR.Metristic/wiki
 ### Installation
 
 * Install node.js
+* Install wc
 * Extract archive
 * Enter the extracted directory, e.g. `Metristic-1.0`.
 * Run `npm install --production` to install the dependencies.
@@ -31,6 +32,7 @@ https://github.com/wasabideveloper/HSR.Metristic/wiki
 ### Global dependencies
 
 * Node.js / npm
+* wc
 * Typescript Compiler ```npm install tsc --global```
 * Typings ```npm install typings --global```
 

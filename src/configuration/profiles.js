@@ -4,13 +4,15 @@ var HtmlMetric = require("../check-plugins/html-metric/html-metric").HtmlMetric;
 var CssMetric = require("../check-plugins/css-metric/css-metric").CssMetric;
 var JsStyleCheck = require("../check-plugins/js-style-check/js-style-check").JsStyleCheck;
 var RegexCheck = require("../check-plugins/regex-check/regex-check").RegexCheck;
+var rules = require("../check-plugins/regex-check/default-rules").rules;
 
 
 module.exports = {
 	general: {
 		name: 'General project',
 		description: 'Check file structure',
-		checks: [StructureMetric]
+		checks: [StructureMetric],
+		options: {}
 	},
 	webMetrics: {
 		name: 'Web project metrics',
@@ -20,14 +22,35 @@ module.exports = {
 	},
 	webCheck: {
 		name: 'Web project checking',
-		description: 'Show metrics of HTML, CSS and JS and check JS code style and check by custom rules.',
+		description: 'Show metrics of HTML, CSS and JS and check JS code style and check by custom patterns.',
 		checks: [StructureMetric, HtmlMetric, CssMetric, JsStyleCheck, RegexCheck],
 		options: {}
 	},
 	webCheckAdvanced: {
-		name: 'Extensive web project checking',
-		description: 'Show metrics of HTML, CSS and JS and check JS code style and check by custom rules and validate html by W3C',
+		name: 'Extensive web project check',
+		description: 'Show metrics of HTML, CSS and JS and check JS code style and check by custom patterns and validate html by W3C',
 		checks: [StructureMetric, HtmlMetric, CssMetric, JsStyleCheck, RegexCheck, HtmlW3cValidator],
 		options: {}
+	},
+	WED1Testation: {
+		name: "WED1 Testation check",
+		description: "Check HTML, CSS and JS of WED1 testation.",
+		checks: /*[StructureMetric, HtmlMetric, CssMetric, JsStyleCheck,*/ [RegexCheck],
+		options: {
+			RegexCheck: {
+				rules: [
+					rules.hreflangAttribute,
+					rules.timeElementUsage,
+					rules.unexpectedElementsUsage,
+					rules.requiredElements,
+					rules.requiredFormElements,
+					rules.rolesUsage,
+					rules.articleUsage,
+					rules.completeArticleUsage,
+					rules.svgObjectUsage,
+					rules.figureUsage
+				]
+			}
+		}
 	}
 };
