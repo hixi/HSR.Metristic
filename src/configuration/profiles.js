@@ -38,16 +38,18 @@ module.exports = {
 		options: {
 			RegexCheck: {
 				rules: [
-					rules.hreflangAttribute,
-					rules.timeElementUsage,
-					rules.unexpectedElementsUsage,
-					rules.requiredElements,
-					rules.requiredFormElements,
-					rules.rolesUsage,
-					rules.articleUsage,
-					rules.completeArticleUsage,
-					rules.svgObjectUsage,
-					rules.figureUsage
+					rules.HTML.hreflangAttribute,
+					rules.HTML.timeElementUsage,
+					rules.HTML.unexpectedElementsUsage,
+					rules.HTML.requiredElements,
+					rules.HTML.requiredFormElements,
+					rules.HTML.rolesUsage,
+					rules.HTML.articleUsage,
+					rules.HTML.completeArticleUsage,
+					rules.HTML.svgObjectUsage,
+					rules.HTML.figureUsage,
+					rules.CSS.floatUsage,
+					rules.CSS.stateEffectUsage
 				]
 			}
 		}
