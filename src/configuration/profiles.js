@@ -49,7 +49,8 @@ module.exports = {
 					rules.HTML.svgObjectUsage,
 					rules.HTML.figureUsage,
 					rules.CSS.floatUsage,
-					rules.CSS.stateEffectUsage
+					rules.CSS.stateEffectUsage,
+					rules.CSS.headingNumbers
 				]
 			}
 		}
