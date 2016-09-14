@@ -50,7 +50,8 @@ module.exports = {
 					rules.HTML.figureUsage,
 					rules.CSS.floatUsage,
 					rules.CSS.stateEffectUsage,
-					rules.CSS.headingNumbers
+					rules.CSS.headingNumbersUsage,
+					rules.CSS.efficientSelectorsUsage
 				]
 			}
 		}
