@@ -51,7 +51,8 @@ module.exports = {
 					rules.CSS.floatUsage,
 					rules.CSS.stateEffectUsage,
 					rules.CSS.headingNumbersUsage,
-					rules.CSS.efficientSelectorsUsage
+					rules.CSS.efficientSelectorsUsage,
+					rules.CSS.unitsUsage
 				]
 			}
 		}
