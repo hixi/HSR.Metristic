@@ -53,7 +53,8 @@ module.exports = {
 					rules.CSS.headingNumbersUsage,
 					rules.CSS.efficientSelectorsUsage,
 					rules.CSS.unitsUsage,
-					rules.CSS.nthChildUsage
+					rules.CSS.nthChildUsage,
+					rules.CSS.calcUsage
 				]
 			}
 		}
