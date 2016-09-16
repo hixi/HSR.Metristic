@@ -52,7 +52,8 @@ module.exports = {
 					rules.CSS.stateEffectUsage,
 					rules.CSS.headingNumbersUsage,
 					rules.CSS.efficientSelectorsUsage,
-					rules.CSS.unitsUsage
+					rules.CSS.unitsUsage,
+					rules.CSS.nthChildUsage
 				]
 			}
 		}
