@@ -48,13 +48,16 @@ module.exports = {
 					rules.HTML.completeArticleUsage,
 					rules.HTML.svgObjectUsage,
 					rules.HTML.figureUsage,
+
 					rules.CSS.floatUsage,
 					rules.CSS.stateEffectUsage,
 					rules.CSS.headingNumbersUsage,
 					rules.CSS.efficientSelectorsUsage,
 					rules.CSS.unitsUsage,
 					rules.CSS.nthChildUsage,
-					rules.CSS.calcUsage
+					rules.CSS.calcUsage,
+
+					rules.JS.codeEvaluationUsage
 				]
 			}
 		}
