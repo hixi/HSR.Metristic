@@ -16,39 +16,55 @@ module.exports = {
 	},
 	webMetrics: {
 		name: 'Web project metrics',
-		description: 'Show metrics of HTML, CSS and JS',
+		description: 'Show metrics of HTML, CSS',
 		checks: [StructureMetric, HtmlMetric, CssMetric],
 		options: {}
 	},
 	webCheck: {
 		name: 'Web project checking',
-		description: 'Show metrics of HTML, CSS and JS and check JS code style and check by custom patterns.',
-		checks: [StructureMetric, HtmlMetric, CssMetric, JsStyleCheck, RegexCheck],
-		options: {}
-	},
-	webCheckAdvanced: {
-		name: 'Extensive web project check',
-		description: 'Show metrics of HTML, CSS and JS and check JS code style and check by custom patterns and validate html by W3C',
-		checks: [StructureMetric, HtmlMetric, CssMetric, JsStyleCheck, RegexCheck, HtmlW3cValidator],
-		options: {}
-	},
-	WED1Testation: {
-		name: "WED1 Testation check",
-		description: "Check HTML, CSS and JS of WED1 testation.",
-		checks: /*[StructureMetric, HtmlMetric, CssMetric, JsStyleCheck,*/ [RegexCheck],
+		description: 'Validate HTML by W3C, check JS code style and check for Selector and unit usage in CSS.',
+		checks: [StructureMetric, HtmlW3cValidator, JsStyleCheck, RegexCheck],
 		options: {
 			RegexCheck: {
 				rules: [
-					rules.hreflangAttribute,
-					rules.timeElementUsage,
-					rules.unexpectedElementsUsage,
-					rules.requiredElements,
-					rules.requiredFormElements,
-					rules.rolesUsage,
-					rules.articleUsage,
-					rules.completeArticleUsage,
-					rules.svgObjectUsage,
-					rules.figureUsage
+					rules.HTML.bookmarkIconUsage,
+					rules.HTML.unexpectedElementsUsage,
+					rules.CSS.efficientSelectorsUsage,
+					rules.CSS.unitsUsage,
+					rules.JS.codeEvaluationUsage
+				]
+			}
+		}
+	},
+	WED1Testation: {
+		name: "WED1 Testation check",
+		description: "Check HTML, CSS and JS according to WED1 testation1 rules.",
+		checks: [StructureMetric, HtmlW3cValidator, JsStyleCheck, RegexCheck],
+		options: {
+			RegexCheck: {
+				rules: [
+					rules.HTML.bookmarkIconUsage,
+					rules.HTML.styleSheetUsage,
+					rules.HTML.hreflangAttribute,
+					rules.HTML.timeElementUsage,
+					rules.HTML.unexpectedElementsUsage,
+					rules.HTML.requiredElements,
+					rules.HTML.requiredFormElements,
+					rules.HTML.rolesUsage,
+					rules.HTML.articleUsage,
+					rules.HTML.completeArticleUsage,
+					rules.HTML.svgObjectUsage,
+					rules.HTML.figureUsage,
+
+					rules.CSS.floatUsage,
+					rules.CSS.stateEffectUsage,
+					rules.CSS.headingNumbersUsage,
+					rules.CSS.efficientSelectorsUsage,
+					rules.CSS.unitsUsage,
+					rules.CSS.nthChildUsage,
+					rules.CSS.calcUsage,
+
+					rules.JS.codeEvaluationUsage
 				]
 			}
 		}
