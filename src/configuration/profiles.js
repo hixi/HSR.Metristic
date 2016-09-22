@@ -68,5 +68,21 @@ module.exports = {
 				]
 			}
 		}
+	},
+	All: {
+		name: "Everything",
+		description: "Run all metrics and checks",
+		checks: [StructureMetric, HtmlMetric, CssMetric, HtmlW3cValidator, JsStyleCheck, RegexCheck],
+		options: {
+			RegexCheck: {
+				rules: [
+					rules.HTML.bookmarkIconUsage,
+					rules.HTML.unexpectedElementsUsage,
+					rules.CSS.efficientSelectorsUsage,
+					rules.CSS.unitsUsage,
+					rules.JS.codeEvaluationUsage
+				]
+			}
+		}
 	}
 };
