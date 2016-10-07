@@ -1,26 +1,27 @@
-var StructureMetric = require("../check-plugins/structure-metric/structure-metric").StructureMetric;
-var HtmlW3cValidator = require("../check-plugins/html-w3c-validator/html-w3c-validator").HtmlW3cValidator;
-var HtmlMetric = require("../check-plugins/html-metric/html-metric").HtmlMetric;
-var CssMetric = require("../check-plugins/css-metric/css-metric").CssMetric;
-var JsStyleCheck = require("../check-plugins/js-style-check/js-style-check").JsStyleCheck;
-var RegexCheck = require("../check-plugins/regex-check/regex-check").RegexCheck;
-var rules = require("../check-plugins/regex-check/default-rules").rules;
+var StructureMetric = require("metristic-plugin-general").StructureMetric;
+var RegexCheck = require("metristic-plugin-general").RegexCheck;
+var rules = require("metristic-plugin-general").rules;
+
+var HtmlW3cValidator = require("metristic-plugin-web").HtmlW3cValidator;
+var HtmlMetric = require("metristic-plugin-web").HtmlMetric;
+var CssMetric = require("metristic-plugin-web").CssMetric;
+var JsStyleCheck = require("metristic-plugin-web").JsStyleCheck;
 
 
 module.exports = {
-	general: {
+	"general": {
 		name: 'General project',
 		description: 'Check file structure',
 		checks: [StructureMetric],
 		options: {}
 	},
-	webMetrics: {
+	"webMetrics": {
 		name: 'Web project metrics',
 		description: 'Show metrics of HTML, CSS',
 		checks: [StructureMetric, HtmlMetric, CssMetric],
 		options: {}
 	},
-	webCheck: {
+	"webCheck": {
 		name: 'Web project checking',
 		description: 'Validate HTML by W3C, check JS code style and check for Selector and unit usage in CSS.',
 		checks: [StructureMetric, HtmlW3cValidator, JsStyleCheck, RegexCheck],
@@ -36,7 +37,7 @@ module.exports = {
 			}
 		}
 	},
-	WED1Testation: {
+	"WED1Testation": {
 		name: "WED1 Testation check",
 		description: "Check HTML, CSS and JS according to WED1 testation1 rules.",
 		checks: [StructureMetric, HtmlW3cValidator, JsStyleCheck, RegexCheck],
@@ -69,7 +70,7 @@ module.exports = {
 			}
 		}
 	},
-	All: {
+	"All": {
 		name: "Everything",
 		description: "Run all metrics and checks",
 		checks: [StructureMetric, HtmlMetric, CssMetric, HtmlW3cValidator, JsStyleCheck, RegexCheck],

@@ -67,6 +67,8 @@ gulp deploy
 Access app:
 `localhost:8080`
 
+To restart manual type `rs` and return.
+
 Compile TS and run tests:
 ```shell
 gulp test
@@ -79,6 +81,33 @@ Install new type declarations:
 # jasmine example
 tsd query jasmine --action install --save
 ```
+
+### Link Metristic Core if you develop local
+
+1. Clone Metristic Core
+2. Create global link `cd Metristic.Core; sudo npm link`.
+3. Add `"metristic-core": "^0.2.0",` in project.json of your deployment repository to your dependencies.
+4. Run `npm link metristic-core` in your project repository.
+
+Npm will create 2 links: `Metristic/HSR.Metristic.Plugin.General/node_modules/metristic-core -> /usr/lib/node_modules/metristic-core -> Metristic/HSR.Metristic.Core`.
+
+"metristic-core" must match the name in project.json
+
+Sometimes npm is throwing errors about link. In this case create is by your self:
+```bash
+sudo ln -s ./ /usr/lib/node_modules/metristic-plugin-xyz
+ln -s /usr/lib/node_modules/metristic-core ./node_modules/metristic-core
+```
+
+
+## Create your own metristic plugin
+
+1. Create a repository like `HSR.Metristic.Plugin.General`. Don't forget main & typings field in project.json. Otherwise it will not be possible to link JS & TS.
+2. If you develop localy, create a global package link: `sudo npm link "metristic-plugin-itsname"`.
+3. Add your repository as dependency to Metrisitc project.json. (npm package or github url). Link it if you work localy (`npm link metristic-plugin-itsname`).
+4. `npm install`
+5. Require and use it.
+
 
 ## Docker image
 
