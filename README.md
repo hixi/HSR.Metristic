@@ -1,5 +1,9 @@
 # HSR.Metristic
-Node.js based checking and metric web service
+Node.js based checking and metric web service.
+
+* [HSR.Metristic.Core](https://github.com/wasabideveloper/HSR.Metristic.Core): Metristic web application
+* [HSR.Metristic.Plugin.General](https://github.com/wasabideveloper/HSR.Metristic.Plugin.General): Structure visualization and regex check plugin
+* [HSR.Metristic.Plugin.Web](https://github.com/wasabideveloper/HSR.Metristic.Plugin.Web): Web check plugins
 
 
 ## Documentation
