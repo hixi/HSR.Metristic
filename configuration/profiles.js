@@ -6,6 +6,7 @@ var HtmlW3cValidator = require("metristic-plugin-web").HtmlW3cValidator;
 var HtmlMetric = require("metristic-plugin-web").HtmlMetric;
 var CssMetric = require("metristic-plugin-web").CssMetric;
 var JsStyleCheck = require("metristic-plugin-web").JsStyleCheck;
+var PageVisualizer = require("metristic-plugin-web").PageVisualizer;
 
 
 module.exports = {
@@ -23,8 +24,9 @@ module.exports = {
 	},
 	"webCheck": {
 		name: 'Web project checking',
-		description: 'Validate HTML by W3C, check JS code style and check for Selector and unit usage in CSS.',
-		checks: [StructureMetric, HtmlW3cValidator, JsStyleCheck, RegexCheck],
+		description: 'Validate HTML by W3C, check JS code style, run JS tests (test.html or SpecRunner.html) and' +
+		' check for Selector and unit usage in CSS.',
+		checks: [StructureMetric, HtmlW3cValidator, JsStyleCheck, RegexCheck, PageVisualizer],
 		options: {
 			RegexCheck: {
 				rules: [
@@ -40,7 +42,7 @@ module.exports = {
 	"WED1Testation": {
 		name: "WED1 Testation check",
 		description: "Check HTML, CSS and JS according to WED1 testation1 rules.",
-		checks: [StructureMetric, HtmlW3cValidator, JsStyleCheck, RegexCheck],
+		checks: [StructureMetric, HtmlW3cValidator, JsStyleCheck, RegexCheck, PageVisualizer],
 		options: {
 			RegexCheck: {
 				rules: [
