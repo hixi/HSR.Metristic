@@ -1,8 +1,8 @@
 'use strict';
 
-let gulp = require('gulp'),
-	nodemon = require('nodemon'),
-	ts = require('gulp-typescript');
+let Gulp = require('gulp'),
+	Nodemon = require('nodemon'),
+	TSC = require('gulp-typescript');
 
 
 var CONFIGURATION = {
@@ -10,6 +10,7 @@ var CONFIGURATION = {
 	sourceDirectoryAssets: __dirname+'/src/assets',
 	deploymentDirectory: __dirname+'/app',
 	deploymentDirectoryAssets: __dirname+'/app/assets',
+	serverReloadWatchFileTypes: ['js', 'html'],
 	tsLintConfig: {
 		configuration: './tslint.json'
 	}
@@ -19,38 +20,42 @@ var STATIC_FILES = [ 'js', 'html', 'png', 'jpg', 'svg', 'css' ].map(
 );
 
 
-var tsProject = ts.createProject('tsconfig.json');
-gulp.task('typescript', function() {
-	var reporter = ts.reporter.defaultReporter();
-	var tsResult = tsProject.src().pipe(ts(tsProject(reporter)));
-	return tsResult.js.pipe(gulp.dest(tsProject.config.compilerOptions.outDir));
+var tsProject = TSC.createProject('tsconfig.json');
+Gulp.task('typescript', function() {
+	var compilerOptions = JSON.parse(JSON.stringify(tsProject.config.compilerOptions));
+	delete compilerOptions.outDir;
+
+	var tsResult = Gulp.src(tsProject.config.include)
+		.pipe(TSC(compilerOptions));
+
+    return tsResult.js.pipe(Gulp.dest(tsProject.config.compilerOptions.outDir));
 });
 
-gulp.task('tslint', function() {
-	gulp.src([CONFIGURATION.sourceDirectory + '/**/*.ts'])
+Gulp.task('tslint', function() {
+	Gulp.src([CONFIGURATION.sourceDirectory + '/**/*.ts'])
 		.pipe(tslint(CONFIGURATION.tsLintConfig))
 		.pipe(tslint.report());
 });
 
-gulp.task('watch', function() {
-	gulp.watch(CONFIGURATION.sourceDirectory+'/**/*.ts', ['typescript']);
-	gulp.watch(STATIC_FILES, ['deploy static']);
+Gulp.task('watch', function() {
+	Gulp.watch(CONFIGURATION.sourceDirectory+'/**/*.ts', ['typescript']);
+	Gulp.watch(STATIC_FILES, ['deploy static']);
 });
 
-gulp.task('deploy', ['typescript', 'deploy static'], function() {});
+Gulp.task('deploy', ['typescript', 'deploy static'], function() {});
 
-gulp.task('serve', ['deploy', 'watch'], function() {
-	nodemon({
+Gulp.task('serve', ['deploy','watch'], function() {
+	Nodemon({
 		script: CONFIGURATION.deploymentDirectory+'/index.js',
-		ext: 'js html'
+		ext: CONFIGURATION.serverReloadWatchFileTypes.join(' ')
 	})
 });
 
-gulp.task('deploy static', [], function() {
-	return gulp.src(STATIC_FILES, {
+Gulp.task('deploy static', [], function() {
+	return Gulp.src(STATIC_FILES, {
 			base: CONFIGURATION.sourceDirectory
 		})
-		.pipe(gulp.dest(CONFIGURATION.deploymentDirectory));
+		.pipe(Gulp.dest(CONFIGURATION.deploymentDirectory));
 });
 
-gulp.task('default', ['serve']);
+Gulp.task('default', ['serve']);

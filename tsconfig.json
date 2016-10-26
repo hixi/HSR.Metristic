@@ -4,12 +4,12 @@
 		"module": "commonjs",
 		"declaration": true,
 		"outDir": "./app",
-		"rootDir": "./src",
+		"rootDir": "./",
 		"sourceMap": true,
 		"target": "es6"
 	},
 	"include": [
-		"./src/**/*",
+		"./src/**/*.ts",
 		"./typings/index.d.ts"
 	]
 }
