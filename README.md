@@ -41,16 +41,13 @@ Node.js based checking and metric web service.
 ### Global dependencies
 
 * Node.js / npm
-* Gulp `npm install gulp --global`
-* Typescript Compiler `npm install typescript --global`
-* Typings `npm install typings --global`
 
 ### Installation
 
 * Install global dependencies
 * Clone project
 * Run `npm install` to install the dependencies.
-* Install typings depencency `typings install`
+* Install typings depencency `npm run typings install`
 
 ### Link Metristic Core if you develop local
 
@@ -68,17 +65,21 @@ Npm will create 2 links: `Metristic/HSR.Metristic.Plugin.General/node_modules/me
 
 Watch files and compile TS to JS on changes:
 ```shell
-gulp watch
+npm run gulp watch
+# or
+npm watch
 ```
 Serve app:
 ```shell
-gulp serve
+npm run gulp serve
 # or
 npm start
 ```
 Deploy app to directory `deploy`:
 ```shell
-gulp deploy
+npm run gulp deploy
+# or
+npm deploy
 ```
 Access app:
 `localhost:8080`
@@ -87,7 +88,7 @@ To restart manual type `rs` and return.
 
 Compile TS and run tests:
 ```shell
-gulp test
+npm run gulp test
 # or
 npm test
 ```
@@ -118,12 +119,16 @@ Docker will clone the newest development source from GitHub and build from sourc
 
 ```shell
 docker build --no-cache -t <organization>/metristic .
+# or
+npm build-container
 ```
 
 ### Run
 
 ```shell
 docker run -p 8080:8080 -it --rm --name metristic <organization>/metristic
+# or
+npm run-container
 ```
 Open `localhost:8080` in your browser.
 
@@ -131,6 +136,8 @@ Open `localhost:8080` in your browser.
 
 ```shell
 docker stop metristic
+# or
+npm stop-container
 ```
 
 ### Manage container
