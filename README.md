@@ -112,13 +112,12 @@ typings install dt~node dt~jasmine --global --save
 
 ## Docker image
 
-To build the image install the complete development environment.
+Docker will clone the newest development source from GitHub and build from source.
 
 ### Build
 
 ```shell
-gulp deploy
-docker build -t <organization>/metristic .
+docker build --no-cache -t <organization>/metristic .
 ```
 
 ### Run

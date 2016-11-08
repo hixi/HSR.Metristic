@@ -1,5 +1,6 @@
 var StructureMetric = require("metristic-plugin-general").StructureMetric;
 var RegexCheck = require("metristic-plugin-general").RegexCheck;
+var StructureCheck = require("metristic-plugin-general").StructureCheck;
 var rules = require("metristic-plugin-general").rules;
 
 var HtmlW3cValidator = require("metristic-plugin-web").HtmlW3cValidator;
@@ -42,7 +43,7 @@ module.exports = {
 	"WED1Testation": {
 		name: "WED1 Testation check",
 		description: "Check HTML, CSS and JS according to WED1 testation1 rules.",
-		checks: [StructureMetric, HtmlW3cValidator, JsStyleCheck, RegexCheck, PageVisualizer],
+		checks: [StructureMetric, HtmlW3cValidator, JsStyleCheck, RegexCheck, StructureCheck, PageVisualizer],
 		options: {
 			RegexCheck: {
 				rules: [
@@ -72,6 +73,48 @@ module.exports = {
 			},
 			PageVisualizer: {
 				filePatterns: ['*/index.html']
+			},
+			StructureCheck: {
+				rules: {
+					children: {
+						'*': {
+							additionalContentForbidden: true,
+							children: {
+								'index.html': {},
+								'calculator': {
+									additionalContentForbidden: true,
+									children: {
+										'index.html': {},
+										'scripts': {
+											additionalContentForbidden: true,
+											children: {
+												'calculator.js': {}
+											}
+										},
+										'styles': {
+											additionalContentForbidden: true,
+											children: {
+												'style.css': {}
+											}
+										}
+									}
+								},
+								'scripts': {
+									additionalContentForbidden: true,
+									children: {
+										'font-size.js': {}
+									}
+								},
+								'styles': {
+									additionalContentForbidden: true,
+									children: {
+										'styles.css': {}
+									}
+								}
+							}
+						}
+					}
+				}
 			}
 		}
 	},
