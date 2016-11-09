@@ -26,13 +26,16 @@ Node.js based checking and metric web service.
 
 * Install [node.js](https://nodejs.org/en/)
 * Verify wc is available: `which wc`
+* Local installation: Download & install core & plugins
+* Download release
 * Extract archive
 * Enter the extracted directory, e.g. `cd Metristic-1.0`.
-* Run `npm install --production` to install the dependencies.
+* Local installation: Link core & plugins: `npm link "metristic-core"; npm link "metristic-plugin-general"; npm link "metristic-plugin-web"`
+* Run `npm install --production --no-optional` to install the dependencies.
 
 ### Start
 
-* Run `node dist/app/index.js` or `node app/index.js` (depends the release, details see release page) to start the application.
+* Run `node app/index.js` or `node app/index.js` (depends the release, details see release page) to start the application.
 * Open `localhost:8080` in your browser.
 
 
@@ -46,6 +49,8 @@ Node.js based checking and metric web service.
 
 * Install global dependencies
 * Clone project
+* Local installation: Clone & install core & plugins
+* Local installation: Link core & plugins: `npm link "metristic-core"; npm link "metristic-plugin-general"; npm link "metristic-plugin-web"`
 * Run `npm install --no-optional` to install the dependencies.
 * Install typings depencency `npm run typings install`
 
