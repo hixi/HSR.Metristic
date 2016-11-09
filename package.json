@@ -1,6 +1,6 @@
 {
   "name": "metristic",
-  "version": "0.2.0",
+  "version": "1.0.0-beta.1",
   "description": "Project archive checking and metric web service",
   "scripts": {
     "start": "gulp serve",
@@ -30,9 +30,9 @@
   "homepage": "https://github.com/wasabideveloper/HSR.Metristic#readme",
   "dependencies": {
     "fs": "0.0.2",
-    "metristic-core": "^0.2.0",
-    "metristic-plugin-general": "^0.2.0",
-    "metristic-plugin-web": "^0.2.0",
+    "metristic-core": ">1.0.0-beta",
+    "metristic-plugin-general": ">1.0.0-beta",
+    "metristic-plugin-web": ">1.0.0-beta",
     "nodemon": "^1.10.2",
     "path": "^0.12.7"
   },
