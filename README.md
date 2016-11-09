@@ -46,7 +46,7 @@ Node.js based checking and metric web service.
 
 * Install global dependencies
 * Clone project
-* Run `npm install` to install the dependencies.
+* Run `npm install --no-optional` to install the dependencies.
 * Install typings depencency `npm run typings install`
 
 ### Link Metristic Core if you develop local
@@ -66,8 +66,6 @@ Npm will create 2 links: `Metristic/HSR.Metristic.Plugin.General/node_modules/me
 Watch files and compile TS to JS on changes:
 ```shell
 npm run gulp watch
-# or
-npm watch
 ```
 Serve app:
 ```shell
@@ -78,20 +76,17 @@ npm start
 Deploy app to directory `deploy`:
 ```shell
 npm run gulp deploy
-# or
-npm deploy
 ```
 Access app:
 `localhost:8080`
 
 To restart manual type `rs` and return.
 
-Compile TS and run tests:
+Pack release (create zip archive of compiled code)
 ```shell
-npm run gulp test
-# or
-npm test
+npm run pack-release
 ```
+
 
 ### Install new type declarations:
 ```shell
@@ -113,7 +108,7 @@ typings install dt~node dt~jasmine --global --save
 
 ## Docker image
 
-Docker will clone the newest development source from GitHub and build from source.
+Docker will clone the newest development source from GitHub, build from source, remove all dependencies and install only production dependencies.
 
 ### Build
 
