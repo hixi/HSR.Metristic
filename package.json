@@ -1,13 +1,13 @@
 {
   "name": "metristic",
-  "version": "1.0.0-beta.1.0.1",
+  "version": "1.0.0-beta.1.0.2",
   "description": "Project archive checking and metric web service",
   "scripts": {
     "start": "gulp serve",
     "gulp": "gulp",
     "typings": "typings",
-    "build-latest-container": "docker build --no-cache -t hsr/metristic/latest -f deployment/latest/Dockerfile .",
-    "build-unstable-container": "docker build --no-cache -t hsr/metristic/unstable -f deployment/unstable/Dockerfile .",
+    "build-latest-container": "docker build --no-cache -t hsr/metristic/latest -f Dockerfile.latest .",
+    "build-unstable-container": "docker build --no-cache -t hsr/metristic/unstable -f Dockerfile.unstable .",
     "run-latest-container": "echo 'start metristic latest'; docker run -p 8080:8080 -it --rm --name metristic-latest hsr/metristic/latest; echo 'stop metristic latest'",
     "run-unstable-container": "echo 'start metristic unstable'; docker run -p 8080:8080 -it --rm --name metristic-unstable hsr/metristic/unstable; echo 'stop metristic unstable'",
     "stop-latest-container": "docker stop metristic-latest",
