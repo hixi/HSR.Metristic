@@ -127,6 +127,13 @@ Stop | `docker stop metristic-latest` <br />or `npm run stop-latest-container` |
 https://nodejs.org/en/docs/guides/nodejs-docker-webapp/
 
 
+### Run container on deployment server using nginx proxy (`jwilder/nginx-proxy:latest`) and letsencrypt companion (jrcs/letsencrypt-nginx-proxy-companion:latest)
+
+```shell
+docker run --name metristic --rm -e VIRTUAL_HOST=metristic.domain.tld -e LETSENCRYPT_HOST=metristic.domain.tld -e LETSENCRYPT_EMAIL=my-mail@domain.tld -e VIRTUAL_PORT=8080 wasabideveloper/hsr.metristic:latest
+```
+
+
 ## Various
 
 https://www.airpair.com/typescript/posts/typescript-development-with-gulp-and-sublime-text
