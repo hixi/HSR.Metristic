@@ -113,32 +113,14 @@ typings install dt~node dt~jasmine --global --save
 
 ## Docker image
 
-Docker will clone the newest development source from GitHub, build from source, remove all dependencies and install only production dependencies.
+Docker will clone the newest stable/development source from GitHub, build from source, remove all dependencies and install only production dependencies.
 
-### Build
+action | latest | unstable
+--- | --- | ---
+Build | `docker build --no-cache -t hsr/metristic/latest -f deployment/latest/Dockerfile .`<br />or `npm build-latest-container` | `docker build --no-cache -t hsr/metristic/unstable -f deployment/unstable/Dockerfile .`<br />or `npm build-unstable-container`
+Run | `docker run -p 8080:8080 -it --rm --name metristic-latest hsr/metristic/latest` <br />`or npm run run-latest-container` | `docker run -p 8080:8080 -it --rm --name metristic-unstable hsr/metristic/unstable`<br />or `npm run run-unstable-container`
+Stop | `docker stop metristic-latest` <br />or `npm run stop-latest-container` | `docker stop metristic-unstable` <br />or `npm run stop-unstable-container`
 
-```shell
-docker build --no-cache -t <organization>/metristic .
-# or
-npm build-container
-```
-
-### Run
-
-```shell
-docker run -p 8080:8080 -it --rm --name metristic <organization>/metristic
-# or
-npm run-container
-```
-Open `localhost:8080` in your browser.
-
-### Stop container
-
-```shell
-docker stop metristic
-# or
-npm stop-container
-```
 
 ### Manage container
 
