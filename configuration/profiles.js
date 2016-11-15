@@ -121,7 +121,7 @@ module.exports = {
 	"All": {
 		name: "Everything",
 		description: "Run all metrics and checks",
-		checks: [StructureMetric, HtmlMetric, CssMetric, HtmlW3cValidator, JsStyleCheck, RegexCheck],
+		checks: [StructureMetric, HtmlMetric, CssMetric, HtmlW3cValidator, JsStyleCheck, RegexCheck, PageVisualizer],
 		options: {
 			RegexCheck: {
 				rules: [
@@ -131,6 +131,10 @@ module.exports = {
 					rules.CSS.unitsUsage,
 					rules.JS.codeEvaluationUsage
 				]
+			},
+			PageVisualizer: {
+				pageSize: [480, 1216],
+				filePatterns: ['**/*.html']
 			}
 		}
 	}
