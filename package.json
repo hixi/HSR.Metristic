@@ -18,7 +18,7 @@
   "typings": "src/index",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/wasabideveloper/HSR.Metristic.git"
+    "url": "git+https://github.com/IFS-Web/HSR.Metristic.git"
   },
   "keywords": [
     "metrics",
@@ -28,9 +28,9 @@
   "author": "HSR Hochschule für Technik Rapperswil, T. Blaser",
   "license": "Apache-2.0",
   "bugs": {
-    "url": "https://github.com/wasabideveloper/HSR.Metristic/issues"
+    "url": "https://github.com/IFS-Web/HSR.Metristic/issues"
   },
-  "homepage": "https://github.com/wasabideveloper/HSR.Metristic#readme",
+  "homepage": "https://github.com/IFS-Web/HSR.Metristic#readme",
   "dependencies": {
     "fs": "0.0.2",
     "metristic-core": ">1.0.0-beta",
