@@ -25,8 +25,8 @@ Node.js based checking and metric web service.
 ### Installation
 
 * Install [node.js](https://nodejs.org/en/)
-* Verify wc is available: `which wc`
-* Local installation: Download & install core & plugins
+* Verify wc is available: `which wc` (used to count lines)
+* Local installation: Download, link, install and deploy core & plugins like described in its documentations. Install core first, then the plugins and at least the deployment (this). For a detailed automated installation example see the steps of the [docker image](./Dockerfile.latest).
 * Download release
 * Extract archive
 * Enter the extracted directory, e.g. `cd Metristic-1.0`.
