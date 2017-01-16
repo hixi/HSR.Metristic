@@ -1,16 +1,16 @@
 # HSR.Metristic
 Node.js based checking and metric web service.
 
-* [HSR.Metristic.Core](https://github.com/wasabideveloper/HSR.Metristic.Core): Metristic web application
-* [HSR.Metristic.Plugin.General](https://github.com/wasabideveloper/HSR.Metristic.Plugin.General): Structure visualization and regex check plugin
-* [HSR.Metristic.Plugin.Web](https://github.com/wasabideveloper/HSR.Metristic.Plugin.Web): Web check plugins
+* [HSR.Metristic.Core](https://github.com/IFS-Web/HSR.Metristic.Core): Metristic web application
+* [HSR.Metristic.Plugin.General](https://github.com/IFS-Web/HSR.Metristic.Plugin.General): Structure visualization and regex check plugin
+* [HSR.Metristic.Plugin.Web](https://github.com/IFS-Web/HSR.Metristic.Plugin.Web): Web check plugins
 
 
 ## Documentation
 
-* Project documentation: [GitHub Wiki](https://github.com/wasabideveloper/HSR.Metristic/wiki)
-* [All issues](https://github.com/wasabideveloper/HSR.Metristic/issues), Current teration: [Open issues](https://github.com/wasabideveloper/HSR.Metristic/issues?q=is%3Aopen+is%3Aissue+milestone%3A%2A+no%3Aassignee) | [In progress](https://github.com/wasabideveloper/HSR.Metristic/issues?utf8=%E2%9C%93&q=is%3Aopen%20is%3Aissue%20milestone%3A*%20assignee%3A*)
-* [Milestones](https://github.com/wasabideveloper/HSR.Metristic/milestones)
+* Project documentation: [GitHub Wiki](https://github.com/IFS-Web/HSR.Metristic/wiki)
+* [All issues](https://github.com/IFS-Web/HSR.Metristic/issues), Current teration: [Open issues](https://github.com/IFS-Web/HSR.Metristic/issues?q=is%3Aopen+is%3Aissue+milestone%3A%2A+no%3Aassignee) | [In progress](https://github.com/IFS-Web/HSR.Metristic/issues?utf8=%E2%9C%93&q=is%3Aopen%20is%3Aissue%20milestone%3A*%20assignee%3A*)
+* [Milestones](https://github.com/IFS-Web/HSR.Metristic/milestones)
 
 
 ## Lisence
@@ -20,7 +20,7 @@ Node.js based checking and metric web service.
 
 ## Releases / Production
 
-⬇ Download on the [Release page](https://github.com/wasabideveloper/HSR.Metristic/releases)
+⬇ Download on the [Release page](https://github.com/IFS-Web/HSR.Metristic/releases)
 
 ### Installation
 
