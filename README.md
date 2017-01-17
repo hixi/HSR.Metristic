@@ -47,7 +47,7 @@ Node.js based checking and metric web service.
 
 ### Installation
 
-* Install global dependencies
+* Install global dependencies (see global dependencies)
 * Clone project
 * Local installation: Clone & install core & plugins
 * Local installation: Link core & plugins: `npm link "metristic-core"; npm link "metristic-plugin-general"; npm link "metristic-plugin-web"`
@@ -127,10 +127,12 @@ Stop | `docker stop metristic-latest` <br />or `npm run stop-latest-container` |
 https://nodejs.org/en/docs/guides/nodejs-docker-webapp/
 
 
-### Run container on deployment server using nginx proxy (`jwilder/nginx-proxy:latest`) and letsencrypt companion (jrcs/letsencrypt-nginx-proxy-companion:latest)
+### Run container using nginx proxy
+
+To run the container on deployment server using nginx proxy (`jwilder/nginx-proxy:latest`) and letsencrypt companion (`jrcs/letsencrypt-nginx-proxy-companion:latest`) start the container by the following command:
 
 ```shell
-docker run --name metristic --rm -e VIRTUAL_HOST=metristic.domain.tld -e LETSENCRYPT_HOST=metristic.domain.tld -e LETSENCRYPT_EMAIL=my-mail@domain.tld -e VIRTUAL_PORT=8080 wasabideveloper/hsr.metristic:latest
+docker run --name metristic --rm -e VIRTUAL_HOST=metristic.domain.tld -e LETSENCRYPT_HOST=metristic.domain.tld -e LETSENCRYPT_EMAIL=my-mail@domain.tld -e VIRTUAL_PORT=8080 instituteforsoftware/hsr.metristic:latest
 ```
 
 
