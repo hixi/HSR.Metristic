@@ -129,11 +129,24 @@ https://nodejs.org/en/docs/guides/nodejs-docker-webapp/
 
 ### Run container using nginx proxy
 
-To run the container on deployment server using nginx proxy (`jwilder/nginx-proxy:latest`) and letsencrypt companion (`jrcs/letsencrypt-nginx-proxy-companion:latest`) start the container by the following command:
+To run the metristic-container on the deployment server using nginx proxy and letsencrypt companion do the following:
 
-```shell
-docker run --name metristic --rm -e VIRTUAL_HOST=metristic.domain.tld -e LETSENCRYPT_HOST=metristic.domain.tld -e LETSENCRYPT_EMAIL=my-mail@domain.tld -e VIRTUAL_PORT=8080 instituteforsoftware/hsr.metristic:latest
-```
+1. Pull, configure & run the nginx proxy (`jwilder/nginx-proxy:latest`) and the letsencrypt companion (`jrcs/letsencrypt-nginx-proxy-companion:latest`) if not already running
+2. Pull the docker image: 
+
+   ```shell
+   docker pull instituteforsoftware/hsr.metristic:latest
+   ```
+3. Start the container by the following command (replace placeholders like `metristic.domain.tld` or `my-mail@domain.tld`):
+
+   ```shell
+   docker run --name metristic --restart=always \
+   -e VIRTUAL_HOST=metristic.domain.tld \
+   -e LETSENCRYPT_HOST=metristic.domain.tld \
+   -e LETSENCRYPT_EMAIL=my-mail@domain.tld \
+   -e VIRTUAL_PORT=8080 \
+   instituteforsoftware/hsr.metristic:latest
+   ```
 
 
 ## Various
