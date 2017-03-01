@@ -11,35 +11,6 @@ var PageVisualizer = require("metristic-plugin-web").PageVisualizer;
 
 
 module.exports = {
-	"general": {
-		name: 'General project',
-		description: 'Check file structure',
-		checks: [StructureMetric],
-		options: {}
-	},
-	"webMetrics": {
-		name: 'Web project metrics',
-		description: 'Show metrics of HTML, CSS',
-		checks: [StructureMetric, HtmlMetric, CssMetric],
-		options: {}
-	},
-	"webCheck": {
-		name: 'Web project checking',
-		description: 'Validate HTML by W3C, check JS code style, run JS tests (test.html or SpecRunner.html) and' +
-		' check for Selector and unit usage in CSS.',
-		checks: [StructureMetric, HtmlW3cValidator, JsStyleCheck, RegexCheck, PageVisualizer],
-		options: {
-			RegexCheck: {
-				rules: [
-					rules.HTML.bookmarkIconUsage,
-					rules.HTML.unexpectedElementsUsage,
-					rules.CSS.efficientSelectorsUsage,
-					rules.CSS.unitsUsage,
-					rules.JS.codeEvaluationUsage
-				]
-			}
-		}
-	},
 	"WED1Testation": {
 		name: "WED1 Testation check",
 		description: "Check HTML, CSS and JS according to WED1 testation1 rules.",
@@ -71,6 +42,11 @@ module.exports = {
 					rules.JS.codeEvaluationUsage
 				]
 			},
+            JsStyleCheck : {
+                jquery: true,
+                browser: true,
+                eqeqeq: "smart"
+            },
 			PageVisualizer: {
 				filePatterns: ['*/index.html']
 			},
@@ -118,6 +94,35 @@ module.exports = {
 			}
 		}
 	},
+    "general": {
+        name: 'General project',
+        description: 'Check file structure',
+        checks: [StructureMetric],
+        options: {}
+    },
+    "webMetrics": {
+        name: 'Web project metrics',
+        description: 'Show metrics of HTML, CSS',
+        checks: [StructureMetric, HtmlMetric, CssMetric],
+        options: {}
+    },
+    "webCheck": {
+        name: 'Web project checking',
+        description: 'Validate HTML by W3C, check JS code style, run JS tests (test.html or SpecRunner.html) and' +
+        ' check for Selector and unit usage in CSS.',
+        checks: [StructureMetric, HtmlW3cValidator, JsStyleCheck, RegexCheck, PageVisualizer],
+        options: {
+            RegexCheck: {
+                rules: [
+                    rules.HTML.bookmarkIconUsage,
+                    rules.HTML.unexpectedElementsUsage,
+                    rules.CSS.efficientSelectorsUsage,
+                    rules.CSS.unitsUsage,
+                    rules.JS.codeEvaluationUsage
+                ]
+            }
+        }
+    },
 	"All": {
 		name: "Everything",
 		description: "Run all metrics and checks",
