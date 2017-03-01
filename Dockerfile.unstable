@@ -1,4 +1,4 @@
-FROM node:6-wheezy
+FROM node:7.6.0-wheezy
 
 RUN apt-get update && apt-get -y install git && apt-get clean all
 

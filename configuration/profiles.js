@@ -42,9 +42,11 @@ module.exports = {
 					rules.JS.codeEvaluationUsage
 				]
 			},
-            JsStyleCheck :{
-                jquery: true
-			},
+            JsStyleCheck : {
+                jquery: true,
+                browser: true,
+                eqeqeq: "smart"
+            },
 			PageVisualizer: {
 				filePatterns: ['*/index.html']
 			},
