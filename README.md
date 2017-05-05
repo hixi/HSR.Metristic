@@ -150,5 +150,4 @@ To run the metristic-container on the deployment server using nginx proxy and le
 
 
 ## Various
-
 https://www.airpair.com/typescript/posts/typescript-development-with-gulp-and-sublime-text
