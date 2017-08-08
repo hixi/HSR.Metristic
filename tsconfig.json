@@ -1,0 +1,15 @@
+{
+	"version": "1.7.0",
+	"compilerOptions": {
+		"module": "commonjs",
+		"declaration": true,
+		"outDir": "./app",
+		"rootDir": "./",
+		"sourceMap": true,
+		"target": "es6"
+	},
+	"include": [
+		"./src/**/*.ts",
+		"./typings/index.d.ts"
+	]
+}

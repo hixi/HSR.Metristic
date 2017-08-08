@@ -1,20 +1,16 @@
 'use strict';
 
-let gulp = require('gulp'),
-	nodemon = require('gulp-nodemon'),
-	ts = require('gulp-typescript'),
-	sass = require('gulp-sass'),
-	sourcemaps = require('gulp-sourcemaps'),
-	jasmine = require('gulp-jasmine'),
-	tslint = require("gulp-tslint");
+let Gulp = require('gulp'),
+	Nodemon = require('nodemon'),
+	TSC = require('gulp-typescript');
 
 
 var CONFIGURATION = {
 	sourceDirectory: __dirname+'/src',
 	sourceDirectoryAssets: __dirname+'/src/assets',
-	deploymentDirectoryBase: __dirname+'/dist',
-	deploymentDirectory: __dirname+'/dist/app',
-	deploymentDirectoryAssets: __dirname+'/dist/app/assets',
+	deploymentDirectory: __dirname+'/app',
+	deploymentDirectoryAssets: __dirname+'/app/assets',
+	serverReloadWatchFileTypes: ['js', 'html'],
 	tsLintConfig: {
 		configuration: './tslint.json'
 	}
@@ -24,55 +20,42 @@ var STATIC_FILES = [ 'js', 'html', 'png', 'jpg', 'svg', 'css' ].map(
 );
 
 
-gulp.task('typescript', function() {
-	return gulp.src([CONFIGURATION.sourceDirectory+'/**/*.ts'])
-		.pipe(sourcemaps.init())
-		.pipe(ts({module: 'commonjs'})).js
-		.pipe(sourcemaps.write())
-		.pipe(gulp.dest(CONFIGURATION.deploymentDirectory));
+var tsProject = TSC.createProject('tsconfig.json');
+Gulp.task('typescript', function() {
+	var compilerOptions = JSON.parse(JSON.stringify(tsProject.config.compilerOptions));
+	delete compilerOptions.outDir;
+
+	var tsResult = Gulp.src(tsProject.config.include)
+		.pipe(TSC(compilerOptions));
+
+    return tsResult.js.pipe(Gulp.dest(tsProject.config.compilerOptions.outDir));
 });
 
-gulp.task('tslint', function() {
-	gulp.src([CONFIGURATION.sourceDirectory + '/**/*.ts'])
+Gulp.task('tslint', function() {
+	Gulp.src([CONFIGURATION.sourceDirectory + '/**/*.ts'])
 		.pipe(tslint(CONFIGURATION.tsLintConfig))
 		.pipe(tslint.report());
 });
 
-gulp.task('sass', function () {
-	return gulp.src(CONFIGURATION.sourceDirectoryAssets+'/**/*.scss')
-		.pipe(sourcemaps.init())
-		.pipe(sass().on('error', sass.logError))
-		.pipe(sourcemaps.write())
-		.pipe(gulp.dest(CONFIGURATION.deploymentDirectoryAssets));
+Gulp.task('watch', function() {
+	Gulp.watch(CONFIGURATION.sourceDirectory+'/**/*.ts', ['typescript']);
+	Gulp.watch(STATIC_FILES, ['deploy static']);
 });
 
-gulp.task('watch', function() {
-	gulp.watch(CONFIGURATION.sourceDirectory+'/**/*.ts', ['typescript']);
-	gulp.watch(CONFIGURATION.sourceDirectoryAssets+'/**/*.scss', ['sass']);
-	gulp.watch(STATIC_FILES, ['deploy static']);
-});
+Gulp.task('deploy', ['typescript', 'deploy static'], function() {});
 
-gulp.task('deploy', ['typescript', 'sass', 'deploy static'], function() {});
-
-gulp.task('serve', ['deploy', 'watch'], function() {
-	nodemon({
+Gulp.task('serve', ['deploy','watch'], function() {
+	Nodemon({
 		script: CONFIGURATION.deploymentDirectory+'/index.js',
-		ext: 'js html'
+		ext: CONFIGURATION.serverReloadWatchFileTypes.join(' ')
 	})
 });
 
-gulp.task('test', ['typescript', 'tslint'], function() {
-	return gulp.src([CONFIGURATION.deploymentDirectoryBase+'/**/*.spec.js'])
-		.pipe(jasmine({
-			spec_dir: CONFIGURATION.deploymentDirectoryBase
-		}));
-});
-
-gulp.task('deploy static', [], function() {
-	return gulp.src(STATIC_FILES, {
+Gulp.task('deploy static', [], function() {
+	return Gulp.src(STATIC_FILES, {
 			base: CONFIGURATION.sourceDirectory
 		})
-		.pipe(gulp.dest(CONFIGURATION.deploymentDirectory));
+		.pipe(Gulp.dest(CONFIGURATION.deploymentDirectory));
 });
 
-gulp.task('default', ['serve']);
+Gulp.task('default', ['serve']);
